@@ -27,6 +27,7 @@ urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('rosetta', include('rosetta.urls')),
     path('Hotels-Expo-Centre-Sharjah-Sharjah-ZS<id>', messezentrenViews.Hotels),
-    path('', airportViews.home, name='home'),
+    # path('', airportViews.home, name='home'),
+    path('', include("main.urls")),
     path('hrach/', include('hrach.urls')),
 )

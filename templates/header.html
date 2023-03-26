@@ -1,0 +1,66 @@
+{% load hash%}
+<header>
+    <div  style="background-color: #333;">
+        <div class="container">
+      <div class="row p-1 justify-content-center align-content-center">
+        <div class="col">
+          <a class="text-light "role="button">Log in</a>
+          <span class="text-light "> | </span>
+          
+          <a class="text-light "role="button">Registration</a>
+        </div>
+        <div class="col text-end">
+          <div class="dropdown">
+            <!-- { get_current_language as LANGUAGE_CODE } -->
+            <button class="btn btn-secondary dropdown-toggle  btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              {{LANGUAGE_CODE}}        </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <!-- {get_available_languages as LANGUAGES } -->
+              <!-- { for lang in LANGUAGES } -->
+                <li><a class="dropdown-item" href="../{{lang.0}}">{{lang.0}}</a></li>
+              <!-- { endfor } -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img width=200 src="https://www.messeninfo.de/usercp/css/system/images/logos/logo_de.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto  mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Measure
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Trade fairs by industry</a></li>
+                <li><a class="dropdown-item" href="#">International trade fair cities</a></li>
+                <li><a class="dropdown-item" href="#">Fairs by country</a></li>
+                <li><a class="dropdown-item" href="#">Trade fair reports</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">exhibition service provider</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Enter fair</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Hotels</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="row justify-content-center p-2" style="background:linear-gradient(to bottom,rgba(31,80,14,0.9) 0%,rgba(73,132,53,0.9) 100%)">
+      <input style="width: 800px;height: 40px;" placeholder="Search for trade fair name, country, city, industry or service provider industry" type="text">
+    </div>
+
+</header>
