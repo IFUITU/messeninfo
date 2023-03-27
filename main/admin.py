@@ -9,12 +9,13 @@ class LangAdmin(admin.ModelAdmin):
 class BranchenAdmin(admin.ModelAdmin):
     list_filter = ("b",)
     # search_fields = ("b_id",)
-    fields = ('b', "text", "beschreibung")
+    # fields = ('b', "text", "beschreibung")
 
 class BranchenInline(admin.TabularInline):
     model = Branchen
-    fields = ("text", "beschreibung")
+    fields = ("sprach", "text", "messe_text", "beschreibung")
 
 @admin.register(b)
 class bAdmin(admin.ModelAdmin):
     inlines = [BranchenInline]
+    list_display = ['id',]

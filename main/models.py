@@ -20,6 +20,8 @@ class Languages(models.Model):
         managed = False
         db_table = 'languages'
 
+    def __str__(self):
+        return self.name
 
 class b(models.Model):
     small_img = models.ImageField(upload_to="b_id", blank=True, null=True)
