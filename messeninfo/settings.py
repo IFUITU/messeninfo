@@ -34,6 +34,9 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+THIRT_PART_APPS = [
+    'rest_framework',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -49,7 +52,7 @@ INSTALLED_APPS = [
     'main',
 
    # 'south',
-]
+] + THIRT_PART_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,6 +155,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
+STATICFILES_DIRS = [
+    BASE_DIR / "assets",
+]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -164,6 +170,12 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+    
+}
 
 
 # Default primary key field type
