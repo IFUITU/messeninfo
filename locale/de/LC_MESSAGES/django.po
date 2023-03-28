@@ -44,39 +44,39 @@ msgstr ""
 
 #: templates/header.html:10
 msgid "Log in"
-msgstr ""
+msgstr "Anmelden"
 
 #: templates/header.html:13
 msgid "Registration"
-msgstr ""
+msgstr "Anmeldung"
 
 #: templates/header.html:44
 msgid "Fairs"
-msgstr ""
+msgstr "Messen"
 
 #: templates/header.html:47
 msgid "Trade fairs by industry"
-msgstr ""
+msgstr "Messen nach Branchen"
 
 #: templates/header.html:48
 msgid "International trade fair cities"
-msgstr ""
+msgstr "Internationale Messestädte"
 
 #: templates/header.html:49
 msgid "Fairs by country"
-msgstr ""
+msgstr "Messen nach Ländern"
 
 #: templates/header.html:50
 msgid "Trade fair reports"
-msgstr ""
+msgstr "Ausstellungsdienstleister"
 
 #: templates/header.html:55
 msgid "Exhibition service provider"
-msgstr ""
+msgstr "Ausstellungsdienstleister"
 
 #: templates/header.html:59
 msgid "Add trade show for free"
-msgstr ""
+msgstr "Messe kostenlos hinzufügen"
 
 #: templates/header.html:63
 msgid "Hotels"
@@ -86,4 +86,4 @@ msgstr ""
 msgid ""
 "Search for trade fair name, country, city, industry or service provider "
 "industry"
-msgstr ""
+msgstr "Suchen Sie nach Messenamen, Land, Stadt, Branche oder Dienstleisterbranche"

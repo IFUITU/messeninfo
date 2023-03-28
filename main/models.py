@@ -59,3 +59,54 @@ class Branchen(models.Model):
     #         self.big_img = File(tmp,'t.jpg')
 
     #     return super().save(**kwargs)
+
+
+
+class Messe(models.Model):
+    messe_id = models.AutoField(primary_key=True)
+    veranstalter_id = models.PositiveIntegerField()
+    zentren_id = models.IntegerField(blank=True, null=True)
+    gruendung = models.PositiveSmallIntegerField(blank=True, null=True)
+    messe_logo = models.CharField(max_length=255, blank=True, null=True)
+    messe_url = models.CharField(max_length=255)
+    messe_tel = models.CharField(max_length=255, blank=True, null=True)
+    messe_fax = models.CharField(max_length=255, blank=True, null=True)
+    messe_land = models.PositiveIntegerField(blank=True, null=True)
+    messe_ort = models.IntegerField(blank=True, null=True)
+    messe_plz = models.CharField(max_length=255, blank=True, null=True)
+    messe_email = models.CharField(max_length=255)
+    messe_strasse = models.CharField(max_length=255, blank=True, null=True)
+    messe_firma = models.CharField(max_length=255, blank=True, null=True)
+    messe_adresse = models.TextField(blank=True, null=True)
+    regional = models.PositiveIntegerField()
+    empfehlung = models.PositiveIntegerField(blank=True, null=True)
+    turnus_id = models.PositiveIntegerField(blank=True, null=True)
+    zutritt_id = models.PositiveIntegerField(blank=True, null=True)
+    zutritt_text_id = models.IntegerField(blank=True, null=True)
+    zutritt_covid_id = models.PositiveIntegerField(blank=True, null=True)
+    messe_angelegt = models.DateTimeField()
+    messe_angelegt_von = models.PositiveIntegerField()
+    messe_update = models.DateTimeField(blank=True, null=True)
+    messe_termin_email = models.DateTimeField(blank=True, null=True)
+    messe_status = models.CharField(max_length=1)
+    eintritt_frei = models.IntegerField(blank=True, null=True)
+    bemerkung = models.TextField(blank=True, null=True)
+    google = models.IntegerField(blank=True, null=True)
+    timetable = models.CharField(max_length=255)
+    oeffnungurl = models.CharField(max_length=255, blank=True, null=True)
+    messe_geprueft = models.DateTimeField(blank=True, null=True)
+    freelancer_id = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'messe'
+
+
+class Btom(models.Model):
+    messe_id = models.ForeignKey(Messe, on_delete=models.RESTRICT)
+    b = models.ForeignKey(b, on_delete=models.RESTRICT)
+    bsort = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'btom'

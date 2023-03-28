@@ -44,11 +44,11 @@ msgstr ""
 
 #: templates/header.html:10
 msgid "Log in"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #: templates/header.html:13
 msgid "Registration"
-msgstr ""
+msgstr "Registru"
 
 #: templates/header.html:44
 msgid "Fairs"

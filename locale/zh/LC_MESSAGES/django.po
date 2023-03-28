@@ -16,7 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: messeninfo/settings.py:137
 msgid "🇬🇧 English"
@@ -44,11 +43,11 @@ msgstr ""
 
 #: templates/header.html:10
 msgid "Log in"
-msgstr ""
+msgstr "登录"
 
 #: templates/header.html:13
 msgid "Registration"
-msgstr ""
+msgstr "登记"
 
 #: templates/header.html:44
 msgid "Fairs"

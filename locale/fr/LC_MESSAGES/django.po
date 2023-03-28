@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: messeninfo/settings.py:137
 msgid "🇬🇧 English"
@@ -44,46 +44,46 @@ msgstr ""
 
 #: templates/header.html:10
 msgid "Log in"
-msgstr ""
+msgstr "Connexion"
 
 #: templates/header.html:13
 msgid "Registration"
-msgstr ""
+msgstr "Inscription"
 
 #: templates/header.html:44
 msgid "Fairs"
-msgstr ""
+msgstr "Foires"
 
 #: templates/header.html:47
 msgid "Trade fairs by industry"
-msgstr ""
+msgstr "Salons par industrie"
 
 #: templates/header.html:48
 msgid "International trade fair cities"
-msgstr ""
+msgstr "Villes de foires internationales"
 
 #: templates/header.html:49
 msgid "Fairs by country"
-msgstr ""
+msgstr "Foires par pays"
 
 #: templates/header.html:50
 msgid "Trade fair reports"
-msgstr ""
+msgstr "Rapports de salons"
 
 #: templates/header.html:55
 msgid "Exhibition service provider"
-msgstr ""
+msgstr "Prestataire de services d'exposition"
 
 #: templates/header.html:59
 msgid "Add trade show for free"
-msgstr ""
+msgstr "Ajouter un salon gratuitement"
 
 #: templates/header.html:63
 msgid "Hotels"
-msgstr ""
+msgstr "Hotels"
 
 #: templates/header.html:71
 msgid ""
 "Search for trade fair name, country, city, industry or service provider "
 "industry"
-msgstr ""
+msgstr "Recherchez le nom du salon, le pays, la ville, l'industrie ou le fournisseur de services industrie"

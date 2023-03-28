@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 THIRT_PART_APPS = [
     'rest_framework',
+    "corsheaders",
 ]
 
 INSTALLED_APPS = [
@@ -59,7 +60,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -85,7 +87,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'messeninfo.wsgi.application'
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -128,16 +130,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-CSRF_TRUSTED_ORIGINS = ["https://f9ea-37-110-214-230.eu.ngrok.io"]
+CSRF_TRUSTED_ORIGINS = ["https://c3ef-95-214-211-205.eu.ngrok.io/"]
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 LANGUAGES = [
-	('en', _('English')),
-	('es', _('Spanish')),
-	('fr', _('French')),
-	('de', _('German')),
-	('ru', _('Russian')),
-	('zh', _('Chinese')),
+	('en', _('🇬🇧 English')),
+	('es', _('🇪🇸 Spanish')),
+	('fr', _('🇫🇷 French')),
+	('de', _('🇩🇪 German')),
+	('ru', _('🇷🇺 Russian')),
+	('zh', _('🇨🇳 Chinese')),
 
 ]
 

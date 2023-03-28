@@ -4,7 +4,7 @@ function make_buttons(){
     for(i = 0; i < letters.length; i++) {
         var button = document.createElement("button");
         button.innerHTML = letters[i];
-        button.className = "btn btn-success btn-sm mx-1";
+        button.className = "btn btn-success btn-sm m-1";
         button.id = letters[i]
         var buttonDiv = document.getElementById("filter_buttons");
         buttonDiv.appendChild(button);
@@ -22,21 +22,23 @@ function append_result(res=null){
         }else{
             res.results.forEach(function callback(currentValue, index, array) {
                 html_data = `<div class="col-lg-3 col-md-12 mb-4">
-                                <div class="card">
-                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                    data-mdb-ripple-color="light">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp"
-                                        class="w-100" />
-                                    <a href="#!">
-                                        <div class="hover-overlay">
-                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                <a href="{%url ''%}">
+                                    <div class="card">
+                                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                        data-mdb-ripple-color="light">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/belt.webp"
+                                            class="w-100" />
+                                        <a href="#!">
+                                            <div class="hover-overlay">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                            </div>
+                                        </a>
                                         </div>
-                                    </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">`+currentValue.text+`</h5>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-3">`+currentValue.text+`</h5>
-                                    </div>
-                                </div>
+                                </a>
                             </div>`
             
                 row_container.append(html_data)
@@ -52,7 +54,8 @@ function append_result(res=null){
 function load_data(attr=null){
     
     let lang = $("#dropdownMenuButton1").attr('value')
-    let url = 'http://' + location.host+ '/' + lang + '/api/get-branchens'
+    // let url = 'https://' + location.host+ '/' + lang + '/api/get-branchens'
+    let url = HOST + lang + '/api/get-branchens'
     if (attr != null){
         url += '?text_letter='+attr
     }
@@ -65,6 +68,7 @@ function load_data(attr=null){
         //   "X-CSRFToken": getCookie("csrftoken"),
         },
         success: (data) => {
+            console.log(data)
             append_result(data)
         },
         error: (error) => {

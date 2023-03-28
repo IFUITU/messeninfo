@@ -2,26 +2,29 @@
 {% load i18n %}
 {% load hash%}
 <header>
+
     <div  style="background-color: #333;">
         <div class="container">
       <div class="row p-1 justify-content-center align-content-center">
         <div class="col">
-          <a class="text-light "role="button">Log in</a>
+          <a class="text-light "role="button">{% trans "Log in" %}</a>
           <span class="text-light "> | </span>
           
-          <a class="text-light "role="button">Registration</a>
+          <a class="text-light "role="button">{% trans "Registration" %}</a>
         </div>
         <div class="col text-end">
           <div class="dropdown">
-            {% get_current_language as LANGUAGE_CODE %}
+          
+          {% get_current_language as LANGUAGE_CODE %}
+          
             <button class="btn btn-secondary dropdown-toggle  btn-sm" 
                     type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" value="{{LANGUAGE_CODE}}">
-              {{LANGUAGE_CODE}}        </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              {{LANGUAGE_CODE}}</button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="language_dropdown">
               {% get_available_languages as LANGUAGES %}
               
                 {% for lang in LANGUAGES %}
-                  <li><a class="dropdown-item" href="../{{lang.0}}">{{lang.0}}</a></li>
+                  <li><a class="dropdown-item" href="#" value="{{lang.0}}">{{lang.1}}</a></li>
                 {% endfor %}
             </ul>
           </div>
@@ -40,23 +43,26 @@
           <ul class="navbar-nav me-auto  mb-2 mb-lg-0">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Measure
+                {%trans 'Fairs'%}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Trade fairs by industry</a></li>
-                <li><a class="dropdown-item" href="#">International trade fair cities</a></li>
-                <li><a class="dropdown-item" href="#">Fairs by country</a></li>
-                <li><a class="dropdown-item" href="#">Trade fair reports</a></li>
+                <li><a class="dropdown-item" href="{%url 'main:branchen'%}">{%trans 'Trade fairs by industry' %}</a></li>
+                <li><a class="dropdown-item" href="#">{% trans 'International trade fair cities' %}</a></li>
+                <li><a class="dropdown-item" href="#">{% trans 'Fairs by country' %}</a></li>
+                <li><a class="dropdown-item" href="#">{%trans 'Trade fair reports' %}</a></li>
               </ul>
             </li>
+            <li class="divider-vertical"></li>
             <li class="nav-item">
-              <a class="nav-link" href="#">exhibition service provider</a>
+              <a class="nav-link" href="#">{% trans 'Exhibition service provider' %}</a>
             </li>
+            <li class="divider-vertical"></li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Enter fair</a>
+              <a class="nav-link" aria-current="page" href="#">{%trans 'Add trade show for free' %}</a>
             </li>
+            <li class="divider-vertical"></li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Hotels</a>
+              <a class="nav-link" aria-current="page" href="#">{% trans 'Hotels' %}</a>
             </li>
           </ul>
         </div>
@@ -64,7 +70,7 @@
     </nav>
     
     <div class="row justify-content-center p-2" style="background:linear-gradient(to bottom,rgba(31,80,14,0.9) 0%,rgba(73,132,53,0.9) 100%)">
-      <input style="width: 800px;height: 40px;" placeholder="Search for trade fair name, country, city, industry or service provider industry" type="text">
+      <input style="width: 800px;height: 40px;" placeholder="{% trans 'Search for trade fair name, country, city, industry or service provider industry'%}" type="text">
     </div>
 
 </header>
