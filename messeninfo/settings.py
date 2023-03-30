@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-CSRF_TRUSTED_ORIGINS = ["https://c3ef-95-214-211-205.eu.ngrok.io/"]
+CSRF_TRUSTED_ORIGINS = ["https://c3ef-95-214-211-205.eu.ngrok.io/", "https://24e2-37-110-210-100.eu.ngrok.io"]
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 LANGUAGES = [
@@ -151,7 +151,9 @@ USE_I18N = True
 
 USE_TZ = True
 
+USE_L10N = False
 
+DATE_FORMAT = "Y-m-d"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -173,11 +175,11 @@ LOCALE_PATHS = [
 ]
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 20,
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE': 20,
     
-}
+# }
 
 
 # Default primary key field type

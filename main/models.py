@@ -65,7 +65,7 @@ class Branchen(models.Model):
 class Messe(models.Model):
     messe_id = models.AutoField(primary_key=True)
     veranstalter_id = models.PositiveIntegerField()
-    zentren_id = models.IntegerField(blank=True, null=True)
+    zentren = models.ForeignKey('messezentren.Messezentren', on_delete=models.RESTRICT, blank=True, null=True)
     gruendung = models.PositiveSmallIntegerField(blank=True, null=True)
     messe_logo = models.CharField(max_length=255, blank=True, null=True)
     messe_url = models.CharField(max_length=255)
@@ -103,7 +103,7 @@ class Messe(models.Model):
 
 
 class Btom(models.Model):
-    messe_id = models.ForeignKey(Messe, on_delete=models.RESTRICT)
+    messe = models.ForeignKey(Messe, on_delete=models.RESTRICT)
     b = models.ForeignKey(b, on_delete=models.RESTRICT)
     bsort = models.SmallIntegerField(blank=True, null=True)
 

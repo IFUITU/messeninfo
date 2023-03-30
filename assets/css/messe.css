@@ -1,0 +1,22 @@
+.messeLogo{
+    position: absolute ;
+    /* top: 15; */
+    bottom: 55%;
+    right: 12px;
+    width: 4.375rem;
+    height:4.375rem;
+}
+
+  .time{
+    position: absolute;
+    top: 33%;
+  }
+
+  .card{
+    background-color:#eaeff2;
+  }
+
+  .extra-line{
+    
+    height: 45px;
+  }

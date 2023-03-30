@@ -1,0 +1,150 @@
+{%extends 'base.html'%}
+{%load static %}
+
+{%block css%}<link rel="stylesheet" href="{%static 'css/messe.css'%}">{%endblock%}
+{%block content%}
+{%include 'apps/main/includes/filters.html'%}
+
+<section class="container ">
+
+          <div class="row" id="row_container">
+              
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-2" id="messe_container">
+                <!-- <div class="col">
+                    <div class="card h-100 border border-3">
+                        
+                        <a href="#">
+                            <img src="https://www.messeninfo.de/vorschau/inter_alpin_logo_2389.png" class="messeLogo" alt="Interalpin, Innsbruck">
+                            <img src="{%static '/default.jpg'%}" class="card-img-top" alt="...">
+                            <div class="time text-light bg-success rounded">19. - 21. April 2023</div>
+                        </a>
+                        <div class="card-body">
+                        <h5 class="card-title">Samrt systems interaction </h5>
+                        
+                        
+                        <p class="card-text "> Internationale Fachmesse für alpine Technologien</p>
+                        <small class="card-text d-inline-block text-truncate">für Fachbesucher und Privatbesucher </small>
+                        </div>
+                    
+                            <div class="container">
+                                <div class="row ">
+                                    <small class="col-8 d-inline-block text-truncate">
+                                        <a href="#"><p class="m-0">Last updated 3 mins ago,</p></a>
+                                        <p class="mr-auto">dasdasd</p>
+                                    </small>
+                                    <small class="col-4">
+                                        <img src="{%static 'img/flag/at.webp'%}" alt="Österreich" class="ml-auto" >
+                                    </small>
+                                </div>
+                            </div>
+
+                    </div>
+                </div> -->
+
+                
+            
+
+
+                
+              </div>
+              
+          </div>
+          {%include 'apps/main/includes/pagination.html' %}
+</section>
+  
+
+{%endblock%}
+
+
+{%block js%}
+
+<script type="text/javascript">
+
+    function append_result(res=null){
+        let row_container = $("#messe_container")
+        row_container.empty()
+        
+        if(res != null){
+            if(res.length == 0){
+                row_container.append(`<h1>Nothing found!</h1>`)
+            }else{
+                res.forEach(function callback(currentValue, index, array) {
+                    currentValue = currentValue.messe
+                    html_data = 
+                    `<div class="col">
+                    <div class="card h-100 border border-3">
+                        
+                        <a href="#">
+                            <img src="https://www.messeninfo.de/vorschau/inter_alpin_logo_2389.png" class="messeLogo" alt="Interalpin, Innsbruck">
+                            <img src="{%static '/default.jpg'%}" class="card-img-top" alt="...">
+                            <div class="time text-light bg-success rounded">12 - 13 April 2023</div>
+                        </a>
+                        <div class="card-body">
+                        <h5 class="card-title">`+currentValue.veranstalter_id +`</h5>
+                        
+                        <!-- <div class="extra-line"></div> -->
+                        <p class="card-text ">` + currentValue.turnus_id +`</p>
+                        <small class="card-text d-inline-block text-truncate">` + currentValue.zutritt_text_id + `</small>
+                        </div>
+                    
+                            <div class="container">
+                                <div class="row ">
+                                    <small class="col-8 d-inline-block text-truncate">
+                                        <a href="`+currentValue.messe_url+`"><p class="m-0">`+ currentValue.messe_url +`</p></a>
+                                        <p class="mr-auto">dasdasd</p>
+                                    </small>
+                                    <small class="col-4">
+                                        <img src="{%static 'img/flag/at.webp'%}" alt="Österreich" class="ml-auto" >
+                                    </small>
+                                </div>
+                            </div>
+    
+                    </div>
+                </div>`
+                
+                    row_container.append(html_data)
+                });
+            }
+        }else{
+            row_container.append(`<img src="/staic/load.gif" width=100 height=100>`)
+        }
+     
+    }
+    
+    function load_data(attr=null){
+        
+        let lang = $("#dropdownMenuButton1").attr('value')
+        // let url = 'https://' + location.host+ '/' + lang + '/api/get-branchens'
+        
+        let url = HOST + lang + '/api/get-messe/'
+        if (attr != null){
+            url += attr
+        }
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "json",
+            headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            //   "X-CSRFToken": getCookie("csrftoken"),
+            },
+            success: (data) => {
+                console.log(data)
+                append_result(data)
+            },
+            error: (error) => {
+                alert(error)
+            }
+        });
+    }
+    
+    
+    $(document).ready(function (){
+        b_id = location.pathname.split('/')[3]
+        append_result()
+        load_data(b_id)
+    
+    })
+</script>
+    
+{%endblock%}

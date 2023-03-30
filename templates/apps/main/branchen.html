@@ -35,13 +35,108 @@
                 </div> -->
                 
             </div>
-            {%include 'apps/main/includes/pagination.html' %}
+            
   </section>
 
 
-
 {%endblock%}
+{%include 'apps/main/includes/pagination.html' %}
 
 {%block js%}
-  <script src="{%static 'js/branchen.js'%}"></script>
+<script src="{%static 'js/methods.js'%}"></script>  
+<script src="{%static 'js/paginate.js'%}"></script>
+  
+ <script text="text-javascript">
+
+function make_buttons(){
+    var letters = ['All','0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+    for(i = 0; i < letters.length; i++) {
+        var button = document.createElement("button");
+        button.innerHTML = letters[i];
+        button.className = "btn btn-success btn-sm m-1";
+        button.id = letters[i]
+        var buttonDiv = document.getElementById("filter_buttons");
+        buttonDiv.appendChild(button);
+    }
+}
+
+function append_result(res=null){
+    let row_container = $("#row_container")
+    row_container.empty()
+    
+    if(res != null){
+        add_pagination(res)
+        
+        if(res.length == 0){
+            row_container.append(`<h1>Nothing found!</h1>`)
+        }else{
+            res.forEach(function callback(currentValue, index, array) {
+                html_data = `<div class="col-lg-3 col-md-12 mb-4">
+                                <a href="/${lang}/messe/${currentValue.b_id}">
+                                    <div class="card">
+                                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                        data-mdb-ripple-color="light">
+                                        <img src="{%static '/default.jpg'%}"
+                                            class="w-100" />
+                                        <a href="#!">
+                                            <div class="hover-overlay">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                            </div>
+                                        </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3">`+currentValue.text+`</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>`
+            
+                row_container.append(html_data)
+            });
+        }
+    }else{
+        row_container.append(`<img src="{%static '/load.gif' %}" width=500 height=500>`)
+    }
+ 
+}
+
+
+function load_data(letter=null, page_num="1"){
+    console.log(letter, "<><><>", page_num)
+    let url = HOST + lang + '/api/get-branchens/'//+'?page='+page_num
+
+    if (letter != null){
+        url += '?text_letter='+letter
+    }
+    GET(url).then((data) => {
+        console.log(url)
+        append_result(data)
+    }).catch((error) => {
+        console.log(error)
+    })
+
+}
+
+
+$(document).ready(function (){
+    append_result()
+    make_buttons()
+    load_data()
+
+
+    $("#filter_buttons").children("button").click(function(e){
+        letter = $(this).attr('id')
+        append_result()
+        load_data(letter)
+    })
+
+    $(".pagination").find("button").click(function(e){
+        page_num = $(this).attr('value')
+        
+        load_data(page_num=page_num)
+    })
+
+})
+
+  </script>
 {%endblock%}

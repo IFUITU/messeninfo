@@ -1,18 +1,17 @@
 
 <div class="pagination justify-content-center">
     <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1" class="btn btn-circle btn-secondary btn-sm">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-circle btn-secondary btn-sm"><</a>
-        {% endif %}
 
-        <span class="current btn btn-circle btn-sm btn-primary">
-             {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-        </span>
+        <button class="btn btn-circle btn-secondary btn-sm" value="1">&laquo; first</button>
+        <button class="btn btn-circle btn-secondary btn-sm" id="previous_page">&laquo;</a>
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-circle btn-secondary btn-sm">></a>
-            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-circle btn-secondary btn-sm">last &raquo;</a>
-        {% endif %}
+        <button class="current btn btn-circle btn-sm btn-primary m-1" disabled>
+             <span id="current_page"></span> of <span class="all_pages">{{ page_obj.paginator.num_pages }}</span>
+        </button>
+        
+        <button  class="btn btn-circle btn-secondary btn-sm" id="next_page">&raquo;</button>
+        <button  class="btn btn-circle btn-secondary btn-sm" >last &raquo;</button>
+        
     </span>
 </div>
+
